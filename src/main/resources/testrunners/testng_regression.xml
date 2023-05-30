@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<!--To comment ctrl + / -->
+<!--verbose: The value goes(1-10) and represents TesNG logs/registers recommended 4 -->
+<!--Selenium neither Selenium Grid runs the parallel mode. Selenium Grid supports the parallel
+    execution, but who really run the parallel mode is TestNG-->
+<!--Tread-count: number of threads -> browsers. To run in parallel mode, of course we need more
+    than 1 tread-->
+<!--parallel: "tests" means run the test blocks in parallel mode -->
+
+<suite name="OpenCart Regression Suite" verbose="4" thread-count="4" parallel="tests">
+
+    <listeners>
+        <listener
+                class-name="com.qa.opencart.listeners.ExtentReportListener" />
+        <listener
+                class-name="com.qa.opencart.listeners.TestAllureListener" />
+        <listener
+                class-name="com.qa.opencart.listeners.AnnotationTransformer" />
+    </listeners>
+
+
+    <!--    The next 3 tests will decide witch browser will be used with the hel of parametrization
+            the decision will be taken in run time -->
+
+    <test name="Login Page Test">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="com.qa.opencart.tests.LoginPageTest" />
+        </classes>
+    </test>
+
+    <test name="Accounts Page Test">
+        <parameter name="browser" value="firefox"/>
+        <classes>
+            <class name="com.qa.opencart.tests.AccountsPageTest" />
+        </classes>
+    </test>
+
+     <test name="Search Test">
+        <parameter name="browser" value="edge"/>
+        <classes>
+            <class name="com.qa.opencart.tests.SearchTest" />
+        </classes>
+    </test>
+
+<!--    This test will use the browser value from config.properties file-->
+
+    <test name="Product Info Test">
+        <classes>
+            <class name="com.qa.opencart.tests.ProductInfoPageTest" />
+        </classes>
+    </test>
+
+</suite>
