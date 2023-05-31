@@ -2,6 +2,7 @@ package com.qa.opencart.pages;
 
 import com.qa.opencart.utils.AppConstants;
 import com.qa.opencart.utils.ElementUtil;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -44,6 +45,7 @@ public class AccountsPage {
         }
         return headersValueList;
     }
+    @Step("Performing search of {0}")
     public ResultsPage doSearch(String searchTerm){
         elementUtil.waitForElementVisible(search,AppConstants.MEDIUM_DEFAULT_TIME);
         elementUtil.doSendKeys(search,searchTerm);

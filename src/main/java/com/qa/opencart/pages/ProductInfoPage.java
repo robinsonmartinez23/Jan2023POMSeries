@@ -2,6 +2,7 @@ package com.qa.opencart.pages;
 
 import com.qa.opencart.utils.AppConstants;
 import com.qa.opencart.utils.ElementUtil;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -49,6 +50,7 @@ public class ProductInfoPage {
     // Product: Product 18
     // Reward Points: 800
     // Availability: In Stock
+    @Step("Getting product metadata information")
     private void getProductMetaData(){
         List<WebElement> metaList = elementUtil.getElements(productMetaData);
         for (WebElement e : metaList) {
@@ -61,6 +63,7 @@ public class ProductInfoPage {
     }
     // $2,000.00 -> I need to provide my own custom key
     // Ex Tax: $2,000.00
+    @Step("Getting Product price details")
     private void getProductPriceData(){
         List<WebElement> priceList = elementUtil.getElements(productPriceData);
         String priceValue = priceList.get(0).getText(); // $2,000.00

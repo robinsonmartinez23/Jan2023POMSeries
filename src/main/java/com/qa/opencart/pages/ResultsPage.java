@@ -1,6 +1,7 @@
 package com.qa.opencart.pages;
 
 import com.qa.opencart.utils.ElementUtil;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -26,6 +27,7 @@ public class ResultsPage {
         System.out.println("Product search result count = " + resultCount);
         return resultCount;
     }
+    @Step("Selecting a product {0}")
     public ProductInfoPage selectProduct(String productName){
         // Dynamic By locator
         By productNameLocator = By.linkText(productName);
