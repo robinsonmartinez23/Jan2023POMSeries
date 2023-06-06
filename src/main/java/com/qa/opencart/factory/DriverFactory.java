@@ -28,7 +28,7 @@ public class DriverFactory {
 
         String browserName = prop.getProperty("browser");
 
-        //If we want input from command line of this parameter
+        //If we want input from the command line of this parameter
         //String browserName = System.getProperty("browser");
 
         System.out.println("Browser name is: " + browserName);
@@ -82,7 +82,7 @@ public class DriverFactory {
          */
 
         /*
-          mvm clean install -Denv="qa"  ->  here we create pass the variable env with value "qa"
+          mvm clean install -Denv="qa"  -> Here we create pass the variable env with value "qa"
           mvm clean install             -> Here we don't specify the environment
          */
 
@@ -99,10 +99,10 @@ public class DriverFactory {
         try {
             if (envName == null) {  // if we don't specify environment as example above then...
                 System.out.println("No env is given..hence running it on QA environment");
-                fileInputStream = new FileInputStream("./src/main/resources/config/qa.config.properties");
+                fileInputStream = new FileInputStream("./src/main/resources/config/qa.config.properties"); //We will run by default QA environment
             } else {                // if we create the variable env as example above, then...
                 System.out.println("Running test cases on env: " + envName);
-                switch (envName.toLowerCase().trim()) {
+                switch (envName.toLowerCase().trim()) { // We are deciding on which environment will run
                     case "qa":
                         fileInputStream = new FileInputStream("./src/main/resources/config/qa.config.properties");
                         break;
