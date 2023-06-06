@@ -26,16 +26,18 @@ public class BaseTest {
     protected SoftAssert softAssert;
 
 
-    @Parameters({"browser"}) // This value will be given to set up method
+    @Parameters({"browser"}) // This browser parameter is an option
+    // to provide this value manually by the parameter in xml testng.xml file
     @BeforeTest
-    public void setup(@Optional String browserName) {     // Here the browser's value
+    public void setup(@Optional String browserName) {     // Here the browser's value given in the xml file
         driverFactory = new DriverFactory();
         properties = driverFactory.initProperties(); // properties will take the values from
                                                      // config.properties by default
             if(browserName!=null){
-                properties.setProperty("browser",browserName); // If we decide provide a different
-                                                               // browser name here we will change it
-                                                               // based in the browserName value
+                properties.setProperty("browser",browserName);  // If we decide provide a manual browser name
+                                                                // in the xml file browser name here we will
+                                                                // change it based in the browserName value
+                                                                // given in xml file not based on configuration file
             }
 
         driver = driverFactory.initDriver(properties);
