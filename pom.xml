@@ -91,7 +91,7 @@
                     <reuseForks>true</reuseForks>
 <!--                    <argLine>-Xmx1024m -XX:MaxPermSize=256m</argLine>-->
                     <suiteXmlFiles>
-                        <suiteXmlFile>src/main/resources/testrunners/testng_chrome.xml</suiteXmlFile>
+                        <suiteXmlFile>src/main/resources/testrunners/testng_firefox.xml</suiteXmlFile>
                     </suiteXmlFiles>
                     <argLine>
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
