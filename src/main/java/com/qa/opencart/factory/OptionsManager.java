@@ -59,7 +59,7 @@ public class OptionsManager {
         //options.setBinary("C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe");
         eo.addArguments("--disable-dev-shm-usage");
         eo.addArguments("disable-infobars");
-        eo.addArguments("--remote-debugging-port=8080");
+        //eo.addArguments("--remote-debugging-port=8080");
         eo.addArguments("--disable-extensions");
         eo.addArguments("--disable-gpu");
         eo.addArguments("--disable-dev-shm-usage");
