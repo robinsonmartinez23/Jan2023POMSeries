@@ -55,7 +55,13 @@ public class OptionsManager {
 
     public EdgeOptions getEdgeOptions(){
         eo = new EdgeOptions();
-        eo.addArguments("--remote-debugging-port=<8080>");
+        eo.addArguments("--no-sandbox");
+        //options.setBinary("C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe");
+        eo.addArguments("--disable-dev-shm-usage");
+        eo.addArguments("disable-infobars");
+        eo.addArguments("--disable-extensions");
+        eo.addArguments("--disable-gpu");
+        eo.addArguments("--disable-dev-shm-usage");
         if(Boolean.parseBoolean((prop.getProperty("headless")))){
             eo.addArguments("--headless");
             System.out.println("headless mode activated");
