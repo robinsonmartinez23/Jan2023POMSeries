@@ -55,7 +55,7 @@ public class OptionsManager {
 
     public EdgeOptions getEdgeOptions(){
         eo = new EdgeOptions();
-        eo.addArguments("--disable-dev-shm-usage");
+        eo.addArguments("--remote-debugging-port=<port>");
         if(Boolean.parseBoolean((prop.getProperty("headless")))){
             eo.addArguments("--headless");
             System.out.println("headless mode activated");
