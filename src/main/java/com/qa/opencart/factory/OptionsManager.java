@@ -55,6 +55,8 @@ public class OptionsManager {
 
     public EdgeOptions getEdgeOptions(){
         eo = new EdgeOptions();
+        eo.addArguments("--no-sandbox");
+        eo.addArguments("--disable-dev-shm-usage");
         if(Boolean.parseBoolean((prop.getProperty("headless")))){
             eo.addArguments("--headless");
             System.out.println("headless mode activated");
