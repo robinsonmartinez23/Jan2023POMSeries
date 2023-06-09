@@ -15,7 +15,7 @@
         <java-version>11</java-version>
         <extentreports-version>5.0.9</extentreports-version>
 <!--        For Selenium-Java-->
-        <selenium-java>4.9.1</selenium-java>
+        <selenium-java>4.10.0</selenium-java>
 <!--        For testNG-->
         <testng-version>7.8.0</testng-version>
 <!--        For Allure Report-->
