@@ -56,7 +56,7 @@ public class OptionsManager {
     public EdgeOptions getEdgeOptions(){
         eo = new EdgeOptions();
         eo.addArguments("--no-sandbox");
-        //options.setBinary("C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe");
+        eo.setBinary("C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe");
         eo.addArguments("--disable-dev-shm-usage");
         eo.addArguments("disable-infobars");
         //eo.addArguments("--remote-debugging-port=8080");
