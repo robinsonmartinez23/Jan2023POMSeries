@@ -12,7 +12,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>${java-version}</maven.compiler.source>
         <maven.compiler.target>${java-version}</maven.compiler.target>
-        <java-version>11</java-version>
+        <java-version>17</java-version>
         <extentreports-version>5.0.9</extentreports-version>
 <!--        For Selenium-Java-->
         <selenium-java>4.10.0</selenium-java>
