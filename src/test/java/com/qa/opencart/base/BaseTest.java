@@ -27,7 +27,7 @@ public class BaseTest {
 
 
     @Parameters({"browser"}) // This browser parameter is an option
-    // to provide this value manually by the parameter in xml testng.xml file.
+    // to provide this value manually by the parameter in xml testng.xml file
     @BeforeTest
     public void setup(@Optional String browserName) {     // Here the browser's value given in the xml file
         driverFactory = new DriverFactory();
