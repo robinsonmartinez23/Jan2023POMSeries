@@ -8,12 +8,15 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Properties;
 
 public class DriverFactory {
@@ -21,38 +24,60 @@ public class DriverFactory {
     //WebDriver driver;
     OptionsManager optionsManager;
     public static String highlightElement;
+    public Properties properties;
 
-    public static ThreadLocal<WebDriver> tlDriver = new ThreadLocal<>();
+    public static ThreadLocal<WebDriver> tlDriver = new ThreadLocal<WebDriver>();
 
-    public WebDriver initDriver(Properties prop) {
+    public WebDriver initDriver(Properties properties) {
 
-        String browserName = prop.getProperty("browser");
+        String browserName = properties.getProperty("browser").trim();
 
-        //If we want input from the command line of this parameter
+        //If we want input from the command line of this parameter and comment it out line 29
         //String browserName = System.getProperty("browser");
 
         System.out.println("Browser name is: " + browserName);
 
-        highlightElement = prop.getProperty("highlight");
+        highlightElement = properties.getProperty("highlight");
 
-        optionsManager = new OptionsManager(prop);
+        optionsManager = new OptionsManager(properties);
 
-        switch (browserName.toLowerCase().trim()) {
+        switch (browserName.toLowerCase()) {
             case "chrome":
-                //driver = new ChromeDriver(optionsManager.getChromeOptions());
-                tlDriver.set(new ChromeDriver(optionsManager.getChromeOptions()));
+                if(Boolean.parseBoolean(properties.getProperty("remote"))){
+                    //Run on grid/remote
+                    init_remoteDriver("chrome");
+                }else{
+                    //Run it on local
+                    System.out.println("running tests on local");
+                    tlDriver.set(new ChromeDriver(optionsManager.getChromeOptions()));
+                }
                 break;
+
+            case "firefox":
+                if(Boolean.parseBoolean(properties.getProperty("remote"))) {
+                    //Run on grid/remote
+                    init_remoteDriver("firefox");
+                }else {
+                    //Run it on local
+                    System.out.println("running tests on local");
+                    tlDriver.set(new FirefoxDriver(optionsManager.getFireFoxOptions()));
+                }
+                break;
+
             case "edge":
-                //driver = new EdgeDriver(optionsManager.getEdgeOptions());
-                tlDriver.set(new EdgeDriver(optionsManager.getEdgeOptions()));
+                if(Boolean.parseBoolean(properties.getProperty("remote"))) {
+                    //Run on grid/remote
+                    init_remoteDriver("edge");
+                }else {
+                    //Run it on local
+                    System.out.println("running tests on local");
+                    tlDriver.set(new EdgeDriver(optionsManager.getEdgeOptions()));
+                }
                 break;
+
             case "safari":
                 //driver = new SafariDriver();
                 tlDriver.set(new SafariDriver());
-                break;
-            case "firefox":
-                //driver = new FirefoxDriver(optionsManager.getFireFoxOptions());
-                tlDriver.set(new FirefoxDriver(optionsManager.getFireFoxOptions()));
                 break;
             default:
                 System.out.println(browserName + " is not a valid browser, please enter a valid one");
@@ -60,9 +85,31 @@ public class DriverFactory {
         }
         getDriver().manage().deleteAllCookies();
         getDriver().manage().window().maximize();
-        getDriver().get(prop.getProperty("url"));
+        getDriver().get(properties.getProperty("url"));
         //return driver;
         return getDriver();
+    }
+
+    private void init_remoteDriver(String browserName) {
+        System.out.println("Running test on grid with browser: "+browserName);
+        try {
+            switch (browserName.toLowerCase()) {
+                case "chrome":
+                    tlDriver.set(new RemoteWebDriver(new URL(properties.getProperty("huburl")), optionsManager.getChromeOptions()));
+                    break;
+                case "firefox":
+                    tlDriver.set(new RemoteWebDriver(new URL(properties.getProperty("huburl")), optionsManager.getFireFoxOptions()));
+                    break;
+                case "edge":
+                    tlDriver.set(new RemoteWebDriver(new URL(properties.getProperty("huburl")), optionsManager.getEdgeOptions()));
+                    break;
+            default:
+                break;
+            }
+        }
+        catch (MalformedURLException e){
+            e.printStackTrace();
+        }
     }
 
     //Return the thread Local copy of the driver. Individual for each thread
@@ -82,14 +129,14 @@ public class DriverFactory {
          */
 
         /*
-          mvm clean install -Denv="qa"  -> Here we create pass the variable env with value "qa"
-          mvm clean install             -> Here we don't specify the environment
+          mvm clean install -Denv="qa" -> Here we create pass the variable env with value "qa"
+          mvm clean install -> Here we don't specify the environment
          */
 
         //C:\Users\RobinM\OneDrive\Escritorio\IntelliJProjets\Jan2023POMSeries>mvm clean install -Denv="qa"
         //C:\Users\RobinM\OneDrive\Escritorio\IntelliJProjets\Jan2023POMSeries>mvm clean install
 
-        Properties properties = new Properties();
+        properties = new Properties();
         FileInputStream fileInputStream = null;
 
         String envName = System.getProperty("env"); // We will read the variable env from CL with
@@ -123,7 +170,8 @@ public class DriverFactory {
                         throw new FrameworkException("NON_VALID_ENV_NAME_GIVE");
                 }
             }
-        }catch (FileNotFoundException e){
+        }
+        catch (FileNotFoundException e){
             e.printStackTrace();
         }
         try {
