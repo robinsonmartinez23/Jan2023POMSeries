@@ -9,7 +9,6 @@ import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.asserts.SoftAssert;
 
-import java.io.FileNotFoundException;
 import java.util.Properties;
 
 public class BaseTest {
@@ -26,10 +25,10 @@ public class BaseTest {
     protected SoftAssert softAssert;
 
 
-    @Parameters({"browser"}) // This browser parameter is an option
+    @Parameters({"browser", "browserversion"}) // This browser parameter is an option
     // to provide this value manually by the parameter in xml testng.xml file
     @BeforeTest
-    public void setup(@Optional String browserName) {     // Here the browser's value given in the xml file
+    public void setup(@Optional String browserName, @Optional String browserVersion) {   // Here the browser's value given in the xml file
         driverFactory = new DriverFactory();
         properties = driverFactory.initProperties(); // properties will take the values from
                                                      // config.properties by default
@@ -37,7 +36,7 @@ public class BaseTest {
                 properties.setProperty("browser",browserName);  // If we decide provide a manual browser name
                                                                 // in the xml file browser name here we will
                                                                 // change it based in the browserName value
-                                                                // given in xml file not based on configuration file
+                properties.setProperty("browserversion", browserVersion);                                                // given in xml file not based on configuration file
             }
 
         driver = driverFactory.initDriver(properties);
