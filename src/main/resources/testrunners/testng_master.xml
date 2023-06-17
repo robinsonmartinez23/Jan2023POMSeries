@@ -5,18 +5,21 @@
 
     <test name="Login Page Test_Chrome">
         <parameter name="browser" value="chrome"/>
+        <parameter name="browserversion" value="114.0" />
         <classes>
             <class name="com.qa.opencart.tests.LoginPageTest" />
         </classes>
     </test>
     <test name="Login Page Test_Firefox">
         <parameter name="browser" value="firefox"/>
+        <parameter name="browserversion" value="114.0" />
         <classes>
             <class name="com.qa.opencart.tests.LoginPageTest" />
         </classes>
     </test>
     <test name="Login Page Test_Edge">
         <parameter name="browser" value="edge"/>
+        <parameter name="browserversion" value="114.0" />
         <classes>
             <class name="com.qa.opencart.tests.LoginPageTest" />
         </classes>
@@ -26,18 +29,21 @@
 
     <test name="Accounts Page Test_Chrome">
         <parameter name="browser" value="chrome"/>
+        <parameter name="browserversion" value="114.0" />
         <classes>
             <class name="com.qa.opencart.tests.AccountsPageTest" />
         </classes>
     </test>
     <test name="Accounts Page Test_Firefox">
         <parameter name="browser" value="firefox"/>
+        <parameter name="browserversion" value="114.0" />
         <classes>
             <class name="com.qa.opencart.tests.AccountsPageTest" />
         </classes>
     </test>
     <test name="Accounts Page Test_Edge">
         <parameter name="browser" value="edge"/>
+        <parameter name="browserversion" value="114.0" />
         <classes>
             <class name="com.qa.opencart.tests.AccountsPageTest" />
         </classes>
@@ -47,18 +53,21 @@
 
     <test name="Search Test_Chrome">
         <parameter name="browser" value="chrome"/>
+        <parameter name="browserversion" value="114.0" />
         <classes>
             <class name="com.qa.opencart.tests.SearchTest" />
         </classes>
     </test>
     <test name="Search Test_Firefox">
         <parameter name="browser" value="firefox"/>
+        <parameter name="browserversion" value="114.0" />
         <classes>
             <class name="com.qa.opencart.tests.SearchTest" />
         </classes>
     </test>
     <test name="Search Test_Edge">
         <parameter name="browser" value="edge"/>
+        <parameter name="browserversion" value="114.0" />
         <classes>
             <class name="com.qa.opencart.tests.SearchTest" />
         </classes>
@@ -68,18 +77,21 @@
 
     <test name="Product Info Test_Chrome">
         <parameter name="browser" value="chrome"/>
+        <parameter name="browserversion" value="114.0" />
         <classes>
             <class name="com.qa.opencart.tests.ProductInfoPageTest" />
         </classes>
     </test>
     <test name="Product Info Test_Firefox">
         <parameter name="browser" value="firefox"/>
+        <parameter name="browserversion" value="114.0" />
         <classes>
             <class name="com.qa.opencart.tests.ProductInfoPageTest" />
         </classes>
     </test>
     <test name="Product Info Test_Edge">
         <parameter name="browser" value="edge"/>
+        <parameter name="browserversion" value="114.0" />
         <classes>
             <class name="com.qa.opencart.tests.ProductInfoPageTest" />
         </classes>
