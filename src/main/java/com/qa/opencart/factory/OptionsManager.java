@@ -4,6 +4,8 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxOptions;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
 
 public class OptionsManager {
@@ -25,20 +27,32 @@ public class OptionsManager {
             co.addArguments("--incognito");
             System.out.println("incognito mode activated");
         }
+        if(Boolean.parseBoolean((prop.getProperty("remote")))){
+            co.setCapability("browserName","chrome");
+            co.setBrowserVersion(prop.getProperty("browserversion"));
+
+            //Options for visualization in Selenoid
+            Map<String, Object> selenoidOptions = new HashMap<>();
+            selenoidOptions.put("screenResolution", "1280x1024x24");
+            selenoidOptions.put("enableVNC", true);
+            selenoidOptions.put("name", prop.getProperty("testname"));
+            co.setCapability("selenoid:options", selenoidOptions);
+        }
         return co;
 
-        /* ***************** Another options for Chrome****************/
+        /* ***************** Another options for Chrome***************
 
-        //co.addArguments("--window-size=1920,1080");
-        //co.addArguments("--no-sandbox");
-        //co.addArguments("--disable-gpu");
-        //co.addArguments("--disable-crash-reporter");
-        //co.addArguments("--disable-extensions");
-        //co.addArguments("--disable-in-process-stack-traces");
-        //co.addArguments("--disable-logging");
-        //co.addArguments("--disable-dev-shm-usage");
-        //co.addArguments("--log-level=3");
-        //co.addArguments("--output=/dev/null");
+        co.addArguments("--window-size=1920,1080");
+        co.addArguments("--no-sandbox");
+        co.addArguments("--disable-gpu");
+        co.addArguments("--disable-crash-reporter");
+        co.addArguments("--disable-extensions");
+        co.addArguments("--disable-in-process-stack-traces");
+        co.addArguments("--disable-logging");
+        co.addArguments("--disable-dev-shm-usage");
+        co.addArguments("--log-level=3");
+        co.addArguments("--output=/dev/null");
+        */
     }
     public FirefoxOptions getFireFoxOptions(){
         fo = new FirefoxOptions();
@@ -50,19 +64,14 @@ public class OptionsManager {
             fo.addArguments("--incognito");
             System.out.println("incognito mode activated");
         }
+        if(Boolean.parseBoolean((prop.getProperty("remote")))){
+            fo.setCapability("browserName","firefox");
+        }
         return fo;
     }
 
     public EdgeOptions getEdgeOptions(){
         eo = new EdgeOptions();
-        eo.addArguments("--no-sandbox");
-        eo.setBinary("C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe");
-        eo.addArguments("--disable-dev-shm-usage");
-        eo.addArguments("disable-infobars");
-        //eo.addArguments("--remote-debugging-port=8080");
-        eo.addArguments("--disable-extensions");
-        eo.addArguments("--disable-gpu");
-        eo.addArguments("--disable-dev-shm-usage");
         if(Boolean.parseBoolean((prop.getProperty("headless")))){
             eo.addArguments("--headless");
             System.out.println("headless mode activated");
