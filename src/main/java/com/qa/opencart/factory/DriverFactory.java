@@ -32,7 +32,7 @@ public class DriverFactory {
 
         String browserName = properties.getProperty("browser").trim();
 
-        //If we want input from the command line of this parameter and comment it out line 29
+        ///If we want input from the command line of this parameter and comment it out line 29
         //String browserName = System.getProperty("browser");
 
         System.out.println("Browser name is: " + browserName);
