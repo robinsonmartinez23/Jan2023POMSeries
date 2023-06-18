@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<!--To comment ctrl + / -->
+<!--verbose: The value goes(1-10) and represents TesNG logs/registers recommended 4 -->
+<!--Selenium neither Selenium Grid runs the parallel mode. Selenium Grid supports the parallel
+    execution, but who really run the parallel mode is TestNG-->
+<!--Tread-count: number of threads -> browsers. To run in parallel mode, of course we need more
+    than 1 tread-->
+<!--parallel: "tests" means run the test blocks in parallel mode -->
+
+<suite name="OpenCart Sanity Suite" verbose="4" thread-count="4" parallel="tests">
+
+    <listeners>
+        <listener
+                class-name="com.qa.opencart.listeners.ExtentReportListener" />
+        <listener
+                class-name="com.qa.opencart.listeners.TestAllureListener" />
+        <listener
+                class-name="com.qa.opencart.listeners.AnnotationTransformer" />
+    </listeners>
+
+    <test name="Login Page Test">
+        <parameter name="browser" value="chrome"/>
+        <parameter name="browserversion" value="114.0" />
+        <classes>
+            <class name="com.qa.opencart.tests.LoginPageTest" />
+        </classes>
+    </test>
+
+</suite>
