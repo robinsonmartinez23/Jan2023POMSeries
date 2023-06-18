@@ -23,8 +23,6 @@ pipeline{
             }
         }
 
-
-
         stage("Deploy to qa"){
             steps{
                 echo("Deploying to qa env")
