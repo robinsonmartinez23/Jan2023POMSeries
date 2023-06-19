@@ -84,6 +84,7 @@ public class OptionsManager {
         if(Boolean.parseBoolean((prop.getProperty("remote")))){
             eo.setCapability("browserName","edge");
             eo.setBrowserVersion(prop.getProperty("browserversion"));
+            eo.addArguments("--remote-allow-origins=*");
         }
         return eo;
     }
