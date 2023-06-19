@@ -17,7 +17,7 @@
         <maven.compiler.target>${java-version}</maven.compiler.target>
         <java-version>11</java-version>
 <!--        For Extent Reports-Java-->
-        <extentreports-version>5.0.9</extentreports-version>
+        <extentreports-version>5.0.8</extentreports-version>
 <!--        For Selenium-Java-->
         <selenium-java>4.9.0</selenium-java>
 <!--        For testNG-->
@@ -94,7 +94,7 @@
                     <forkCount>3</forkCount>
                     <reuseForks>true</reuseForks>
                     <suiteXmlFiles>
-                    <suiteXmlFile>src/main/resources/testrunners/testng_chrome.xml</suiteXmlFile>-->
+                    <suiteXmlFile>src/main/resources/testrunners/testng_firefox.xml</suiteXmlFile>-->
 <!--                    <suiteXmlFile>${suiteXmlFile}</suiteXmlFile>-->
                     </suiteXmlFiles>
                     <argLine>
