@@ -81,14 +81,6 @@ public class OptionsManager {
             eo.addArguments("--incognito");
             System.out.println("incognito mode activated");
         }
-        if(Boolean.parseBoolean((prop.getProperty("remote")))){
-            eo.setCapability("browserName","edge");
-            eo.setBrowserVersion(prop.getProperty("browserversion"));
-
-            EdgeOptions edgeOptions = new EdgeOptions();
-            eo.addArguments("--remote-allow-origins=*");
-            eo.setCapability("ms:edgeOptions",edgeOptions);
-        }
         return eo;
     }
 
