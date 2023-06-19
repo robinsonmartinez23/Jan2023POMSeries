@@ -87,7 +87,7 @@ public class OptionsManager {
 
             EdgeOptions edgeOptions = new EdgeOptions();
             eo.addArguments("--remote-allow-origins=*");
-            eo.setCapability("ms:edgeOption",edgeOptions);
+            eo.setCapability("ms:edgeOptions",edgeOptions);
         }
         return eo;
     }
