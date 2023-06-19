@@ -81,6 +81,9 @@ public class OptionsManager {
             eo.addArguments("--incognito");
             System.out.println("incognito mode activated");
         }
+        if(Boolean.parseBoolean((prop.getProperty("remote")))){
+            eo.setCapability("browserName","MicrosoftEdge");
+        }
         return eo;
     }
 
