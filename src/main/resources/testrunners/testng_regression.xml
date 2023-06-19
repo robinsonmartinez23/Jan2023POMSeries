@@ -41,7 +41,7 @@
     </test>
 
      <test name="Search Test">
-        <parameter name="browser" value="firefox"/>
+        <parameter name="browser" value="edge"/>
         <parameter name="browserversion" value="114.0" />
         <classes>
             <class name="com.qa.opencart.tests.SearchTest" />
