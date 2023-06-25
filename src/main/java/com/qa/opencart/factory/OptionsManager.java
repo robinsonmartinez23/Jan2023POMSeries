@@ -83,6 +83,7 @@ public class OptionsManager {
         }
         if(Boolean.parseBoolean((prop.getProperty("remote")))){
             eo.setCapability("browserName","MicrosoftEdge");
+            eo.setBrowserVersion(prop.getProperty("browserversion"));
         }
         return eo;
     }
