@@ -3,6 +3,15 @@
 
 <suite name="OpenCart Regression Suite_Master" verbose="4" thread-count="4" parallel="tests">
 
+    <listeners>
+        <listener
+                class-name="com.qa.opencart.listeners.ExtentReportListener" />
+        <listener
+                class-name="com.qa.opencart.listeners.TestAllureListener" />
+        <listener
+                class-name="com.qa.opencart.listeners.AnnotationTransformer" />
+    </listeners>
+
     <test name="Login Page Test_Chrome">
         <parameter name="browser" value="chrome"/>
         <parameter name="browserversion" value="114.0" />
