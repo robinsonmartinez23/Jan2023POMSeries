@@ -82,7 +82,7 @@ public class OptionsManager {
             System.out.println("incognito mode activated");
         }
         if(Boolean.parseBoolean((prop.getProperty("remote")))){
-            eo.setCapability("browserName","MicrosoftEdge");
+            eo.setCapability("browserName","Edge");
             eo.setBrowserVersion(prop.getProperty("browserversion"));
         }
         return eo;
