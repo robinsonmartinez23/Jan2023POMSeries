@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
-<suite name="OpenCart Regression Suite for Selenoid " verbose="4" thread-count="4" parallel="tests">
+<suite name="OpenCart Regression Suite for Selenoid" verbose="4" thread-count="4" parallel="tests">
 
     <listeners>
         <listener
