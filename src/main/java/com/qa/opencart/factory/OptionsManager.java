@@ -67,6 +67,13 @@ public class OptionsManager {
         if(Boolean.parseBoolean((prop.getProperty("remote")))){
             fo.setCapability("browserName","firefox");
             fo.setBrowserVersion(prop.getProperty("browserversion"));
+
+            //Options for visualization in Selenoid
+            Map<String, Object> selenoidOptions = new HashMap<>();
+            selenoidOptions.put("screenResolution", "1280x1024x24");
+            selenoidOptions.put("enableVNC", true);
+            selenoidOptions.put("name", prop.getProperty("testname"));
+            fo.setCapability("selenoid:options", selenoidOptions);
         }
         return fo;
     }
